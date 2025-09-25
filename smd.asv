@@ -1,0 +1,6 @@
+func dx=smd(x,m,k,c)
+dx(1,1) = x(2);
+dx(1,2) = -k/m*x(1) -c/m*x(2) +
+
+
+end
