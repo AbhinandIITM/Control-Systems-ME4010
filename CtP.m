@@ -11,4 +11,4 @@ function dx = CtP(x,M,m,l,g,u,b)
     Xddot = (u*m*(l^2) + m*l*(thetadot^2)*sin(theta) -b*Xdot -(m^3)*(l^2)*g*cos(theta)*sin(theta))/ denom;
     thetaddot = ((m+M)*m*g*l*sin(theta) - m*l*cos(theta)*(m*l*(thetadot^2)*sin(thetadot) - b*theta) -u*l*cos(theta))/denom;
     dx = [Xdot; Xddot; thetadot; thetaddot];
-    endm,
+end
