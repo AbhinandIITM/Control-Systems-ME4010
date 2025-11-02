@@ -1,0 +1,36 @@
+clc; clear all;
+
+% Define symbolic variables
+syms M_w M_r m_b R I_w I_r d h I_b r g T
+syms theta(t) x_w(t) x(t)
+
+% Position (manual for illustration; adapt as needed)
+pos = [cos(theta), sin(theta); -sin(theta), cos(theta)] * [x; h + r] + [x_w; R];
+x_b = simplify(pos(1));
+y_b = simplify(pos(2));
+
+% Potential Energy
+U_b = m_b*g*y_b;
+U_r = M_r*g*(R + d*cos(theta));
+U_w = M_w*g*R;
+U = simplify(U_b + U_r + U_w);
+
+% Kinetic Energy (edit as per your convention)
+T_w = 0.5*M_w*diff(x_w,t)^2 + 0.5*I_w*(diff(x_w,t)/R)^2;
+T_r = 0.5*(M_r*diff(x_w,t)^2 + I_r*diff(theta,t)^2);
+% Expand below as needed, similar to original script
+T_b = 0.5*( m_b*( (diff(x, t)*cos(theta) - x*sin(theta)*diff(theta, t) + (R+r)*cos(theta) + diff(x_w,t) )^2 ...
+    + ( -diff(x, t)*sin(theta) - x*cos(theta)*diff(theta, t) - (h+r)*sin(theta) )^2 ) + I_b*(diff(x, t)/r)^2 );
+T = simplify(T_w + T_r + T_b);
+
+% Lagrangian
+L = simplify(T - U);
+
+%%
+
+
+%[appendix]{"version":"1.0"}
+%---
+%[metadata:view]
+%   data: {"layout":"onright"}
+%---
