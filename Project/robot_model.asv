@@ -31,17 +31,15 @@ xlabel('Time [s]');
 ylabel('Ball position x [m]');
 title('Ball position');
 grid on;
-hold off;
+hold off
 
 subplot(2,1,2);
-hold on;
 plot(t, rad2deg(z(:,3)), 'LineWidth', 1.6);
 plot(t, z(:,4), 'LineWidth', 1.6,'Color','red');
 xlabel('Time [s]');
 ylabel('Tilt angle \theta [deg]');
 title('Robot tilt');
 grid on;
-hold off;
 
 % Nonlinear dynamics with LQR controller function
 function dz = nl_dynamics_lqr(~, z, K, ...
